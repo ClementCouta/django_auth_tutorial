@@ -25,7 +25,9 @@ class LoginPageView(View):
         message = 'Identifiants invalides.'
         return render(request, self.template_name, context={'form': form, 'message': message})
 
-def logout_user(request):
+class LogoutView(View):
+    def post(self,request):
+        logout(request)
+        return redirect('login')
     
-    logout(request)
-    return redirect('login')
+    
