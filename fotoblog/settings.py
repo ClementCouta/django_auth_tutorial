@@ -56,7 +56,9 @@ ROOT_URLCONF = 'fotoblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR.joinpath('templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +86,12 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
+# fotoblog/settings.py
+AUTH_USER_MODEL = 'authentication.User'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
