@@ -19,6 +19,8 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView,
 from django.urls import path
 import blog.views
 import authentication.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +33,8 @@ urlpatterns = [
     path('password_change/', PasswordChangeView.as_view(template_name='authentication/password_change.html'),name='password_change'),
     path('password_change_done/', PasswordChangeDoneView.as_view(template_name='authentication/password_change_done.html'),name='password_change_done'),
     path('home/', blog.views.home, name='home'),
+    path('photo/upload/', blog.views.photo_upload, name='photo_upload'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
