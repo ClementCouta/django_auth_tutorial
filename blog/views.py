@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.forms import formset_factory
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404 
 from . import forms, models
 
@@ -12,6 +12,7 @@ def home(request):
     return render(request, 'blog/home.html', context = {'photos':photos, 'blogs':blogs})
 
 @login_required
+@permission_required('blog.add_photo', raise_exception=True)
 def photo_upload(request):
     form = forms.PhotoForm()
     if request.method == 'POST':
