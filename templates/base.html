@@ -18,5 +18,6 @@
 {% if perms.blog.add_photo %}
     <p><a href="{% url 'photo_upload' %}">Télécharger une photo</a></p>
 {% endif %}
+<p><a href="{% url 'follow_users' %}">Suivre des utilisateurs</a></p>
 <p><a href="{% url 'create_multiple_photos' %}">Télécharger plusieurs photos</a></p>
 </html>
